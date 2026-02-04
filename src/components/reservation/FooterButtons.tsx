@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 
 interface FooterButtonsProps {
   backHref?: string;
+  showBack?: boolean;
   nextHref?: string;
   nextDisabled?: boolean;
   footerText?: string;
@@ -12,6 +13,7 @@ interface FooterButtonsProps {
 
 export function FooterButtons({
   backHref,
+  showBack = true,
   nextHref = "/select-package",
   nextDisabled = false,
   footerText = "© 2025 Koh Tao Scuba Club. All rights reserved.",
@@ -19,23 +21,25 @@ export function FooterButtons({
   return (
     <div className="w-full mt-auto shadow-[0px_-8px_20px_rgba(72,72,72,0.05)]">
       <div className="flex flex-row justify-center items-center gap-4 md:gap-6 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-[233px] py-6 bg-white rounded-t-[24px] max-w-[1440px] mx-auto">
-        {backHref ? (
-          <Link href={backHref} className="flex-1 max-w-[120px] sm:max-w-[200px] md:max-w-[280px] lg:max-w-[326px]">
+        {showBack && (
+          backHref ? (
+            <Link href={backHref} className="flex-1 max-w-[120px] sm:max-w-[200px] md:max-w-[280px] lg:max-w-[326px]">
+              <Button
+                variant="outline"
+                className="w-full h-12 border border-[#F4DDDA] bg-white text-[#CD5B4D] hover:bg-gray-50 rounded-[10px] font-semibold text-sm"
+              >
+                Back
+              </Button>
+            </Link>
+          ) : (
             <Button
               variant="outline"
-              className="w-full h-12 border border-[#F4DDDA] bg-white text-[#CD5B4D] hover:bg-gray-50 rounded-[10px] font-semibold text-sm"
+              className="flex-1 max-w-[120px] sm:max-w-[200px] md:max-w-[280px] lg:max-w-[326px] h-12 border border-[#F4DDDA] bg-white text-[#CD5B4D] hover:bg-gray-50 rounded-[10px] font-semibold text-sm"
+              disabled
             >
               Back
             </Button>
-          </Link>
-        ) : (
-          <Button
-            variant="outline"
-            className="flex-1 max-w-[120px] sm:max-w-[200px] md:max-w-[280px] lg:max-w-[326px] h-12 border border-[#F4DDDA] bg-white text-[#CD5B4D] hover:bg-gray-50 rounded-[10px] font-semibold text-sm"
-            disabled
-          >
-            Back
-          </Button>
+          )
         )}
         {nextHref && !nextDisabled ? (
           <Link href={nextHref} className="flex-1 max-w-[200px] sm:max-w-[320px] md:max-w-[440px] lg:max-w-[560px]">

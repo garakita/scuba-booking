@@ -66,7 +66,7 @@ export function ReservationDetailPage() {
             value={diverCount}
             onChange={setDiverCount}
             companyName="Koh Tao Scuba Club"
-            logoSrc={undefined}
+            logoSrc="/scuba-logo.png"
           />
 
           {/* Contact - per diver (only when count selected) */}
@@ -101,6 +101,7 @@ export function ReservationDetailPage() {
       </div>
 
       <FooterButtons
+        showBack={false}
         nextHref={`/select-package?divers=${diverCount}`}
         nextDisabled={!isFormValid}
       />
