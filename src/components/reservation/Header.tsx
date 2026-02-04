@@ -7,8 +7,8 @@ import { cn } from "@/lib/utils";
 const STEPS = [
   { id: 1, label: "Reservation Detail" },
   { id: 2, label: "Select Package" },
-  { id: 3, label: "Payment" },
-  { id: 4, label: "Summary" },
+  { id: 3, label: "Customer Information" },
+  { id: 4, label: "Summary and Payment" },
 ];
 
 interface HeaderProps {
