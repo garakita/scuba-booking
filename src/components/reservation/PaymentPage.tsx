@@ -47,7 +47,7 @@ export function PaymentPage() {
 
   const isNextDisabled = !agreePolicy || !selectedCourse;
   const summaryHref = courseId
-    ? `/summary?divers=${diverCount}&courseId=${courseId}&deposit=${depositOption}&payment=${paymentMethod}&amount=${amountToPay}&name=${encodeURIComponent(contactName)}&phone=${encodeURIComponent(contactPhone)}&email=${encodeURIComponent(contactEmail)}&total=${totalPrice}`
+    ? `/booking/summary?divers=${diverCount}&courseId=${courseId}&deposit=${depositOption}&payment=${paymentMethod}&amount=${amountToPay}&name=${encodeURIComponent(contactName)}&phone=${encodeURIComponent(contactPhone)}&email=${encodeURIComponent(contactEmail)}&total=${totalPrice}`
     : undefined;
 
   return (
@@ -571,7 +571,7 @@ export function PaymentPage() {
       </div>
 
       <FooterButtons
-        backHref={`/select-package?divers=${diverCount}`}
+        backHref={`/booking/select-package?divers=${diverCount}`}
         nextHref={summaryHref}
         nextDisabled={isNextDisabled}
         footerText="© 2025 Koh Tao Scuba Club. All rights reserved."

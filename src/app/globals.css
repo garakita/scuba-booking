@@ -22,6 +22,10 @@
   --color-foreground: var(--foreground);
   --color-primary: var(--primary-100);
   --color-primary-foreground: var(--white);
+  --color-popover: var(--white);
+  --color-popover-foreground: var(--foreground);
+  --color-accent: var(--gray-200);
+  --color-accent-foreground: var(--foreground);
   --font-sans: var(--font-ibm-plex-sans), 'IBM Plex Sans', system-ui, sans-serif;
 }
 

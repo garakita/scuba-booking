@@ -1,6 +1,6 @@
 "use client";
 
-import { User, Phone, Mail } from "lucide-react";
+import { User, Phone, Mail, FileText } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -44,6 +44,8 @@ interface DiversContactFormProps {
   onContactsChange: (contacts: DiverContact[]) => void;
   email?: string;
   onEmailChange?: (email: string) => void;
+  note?: string;
+  onNoteChange?: (note: string) => void;
 }
 
 export function DiversContactForm({
@@ -52,6 +54,8 @@ export function DiversContactForm({
   onContactsChange,
   email = "",
   onEmailChange,
+  note = "",
+  onNoteChange,
 }: DiversContactFormProps) {
   const updateContact = (index: number, field: keyof DiverContact, value: string) => {
     const next = [...contacts];
@@ -78,7 +82,7 @@ export function DiversContactForm({
         </span>
       </div>
       <p className="text-[#92929D] text-sm">
-        Enter details for each diver.
+        Enter details for each diver. Diver 1 is the primary contact.
       </p>
       {/* Email for booking confirmation */}
       {onEmailChange && (
@@ -101,9 +105,16 @@ export function DiversContactForm({
             key={i}
             className="flex flex-col gap-3 p-4 rounded-xl border border-[#D5D5DC] bg-[#FAFAFA]"
           >
-            <span className="text-[#122C49] font-medium text-sm">
-              Diver {i + 1}
-            </span>
+            <div className="flex items-center gap-2">
+              <span className="text-[#122C49] font-medium text-sm">
+                Diver {i + 1}
+              </span>
+              {i === 0 && (
+                <span className="px-2 py-0.5 rounded-md bg-[#CD5B4D]/10 text-[#CD5B4D] text-xs font-medium">
+                  Primary contact
+                </span>
+              )}
+            </div>
             <div className="flex flex-col gap-2">
               <div className="flex flex-row items-center gap-2">
                 <User className="w-4 h-4 text-[#92929D]" strokeWidth={2} />
@@ -150,6 +161,21 @@ export function DiversContactForm({
           </div>
         ))}
       </div>
+      {onNoteChange && (
+        <div className="flex flex-col gap-2">
+          <div className="flex flex-row items-center gap-2">
+            <FileText className="w-4 h-4 text-[#92929D]" strokeWidth={2} />
+            <label className="text-sm font-medium text-[#122C49]">Note</label>
+          </div>
+          <textarea
+            value={note}
+            onChange={(e) => onNoteChange(e.target.value)}
+            placeholder="Additional notes (optional)"
+            rows={3}
+            className="w-full px-4 py-3 bg-white border border-[#D5D5DC] rounded-lg text-sm text-[#122C49] placeholder:text-[#92929D] focus:outline-none focus:ring-2 focus:ring-[#CD5B4D]/30 focus:border-[#CD5B4D] resize-none"
+          />
+        </div>
+      )}
     </div>
   );
 }
