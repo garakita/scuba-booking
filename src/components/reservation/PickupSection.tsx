@@ -10,6 +10,8 @@ interface PickupSectionProps {
   onPickupLocationChange: (value: string) => void;
   pickupArea: string;
   onPickupAreaChange: (value: string) => void;
+  /** When true, no outer card styling (for embedding in parent card) */
+  embedded?: boolean;
 }
 
 export function PickupSection({
@@ -19,10 +21,14 @@ export function PickupSection({
   onPickupLocationChange,
   pickupArea,
   onPickupAreaChange,
+  embedded = false,
 }: PickupSectionProps) {
 
   return (
-    <div className="flex flex-col gap-3 md:gap-4 p-4 md:p-6 bg-white rounded-2xl md:rounded-[24px] shadow-sm">
+    <div className={cn(
+      "flex flex-col gap-3 md:gap-4",
+      !embedded && "p-4 md:p-6 bg-white rounded-2xl md:rounded-[24px] shadow-sm"
+    )}>
       <div className="flex flex-col gap-3">
         <button
           type="button"

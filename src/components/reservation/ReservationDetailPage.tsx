@@ -19,6 +19,7 @@ export function ReservationDetailPage() {
   const [diverCount, setDiverCount] = useState(1);
   const [contacts, setContacts] = useState<DiverContact[]>([]);
   const [email, setEmail] = useState("");
+  const [note, setNote] = useState("");
   const [needsPickup, setNeedsPickup] = useState(false);
   const [pickupLocation, setPickupLocation] = useState("");
   const [pickupArea, setPickupArea] = useState("");
@@ -80,15 +81,35 @@ export function ReservationDetailPage() {
             />
           )}
 
-          {/* 3. Pickup - single location + area */}
-          <PickupSection
-            needsPickup={needsPickup}
-            onNeedsPickupChange={setNeedsPickup}
-            pickupLocation={pickupLocation}
-            onPickupLocationChange={setPickupLocation}
-            pickupArea={pickupArea}
-            onPickupAreaChange={setPickupArea}
-          />
+          {/* 3. Request & Pickup - grouped together */}
+          <div className="flex flex-col gap-4 p-4 md:p-6 bg-white rounded-2xl md:rounded-[24px] shadow-sm">
+            <div className="flex flex-col gap-3">
+              <div className="flex flex-row items-center gap-2">
+                <span className="text-[#122C49] font-semibold text-base md:text-xl">
+                  Request & Pickup
+                </span>
+              </div>
+              <div className="flex flex-col gap-2">
+                <label className="text-sm font-medium text-[#696974]">Note</label>
+                <textarea
+                  value={note}
+                  onChange={(e) => setNote(e.target.value)}
+                  placeholder="Additional notes (optional)"
+                  rows={3}
+                  className="w-full px-4 py-3 bg-white border border-[#D5D5DC] rounded-lg text-sm text-[#122C49] placeholder:text-[#92929D] focus:outline-none focus:ring-2 focus:ring-[#CD5B4D]/30 focus:border-[#CD5B4D] resize-none"
+                />
+              </div>
+              <PickupSection
+                needsPickup={needsPickup}
+                onNeedsPickupChange={setNeedsPickup}
+                pickupLocation={pickupLocation}
+                onPickupLocationChange={setPickupLocation}
+                pickupArea={pickupArea}
+                onPickupAreaChange={setPickupArea}
+                embedded
+              />
+            </div>
+          </div>
 
           {/* 4. Date & Time */}
           <div className="flex flex-col gap-3 md:gap-4 p-4 md:p-6 bg-white rounded-2xl md:rounded-[24px] shadow-sm">
@@ -102,7 +123,7 @@ export function ReservationDetailPage() {
 
       <FooterButtons
         showBack={false}
-        nextHref={`/select-package?divers=${diverCount}`}
+        nextHref={`/booking/select-package?divers=${diverCount}${note ? `&note=${encodeURIComponent(note)}` : ""}`}
         nextDisabled={!isFormValid}
       />
     </div>

@@ -15,7 +15,7 @@ interface FooterButtonsProps {
 export function FooterButtons({
   backHref,
   showBack = true,
-  nextHref = "/select-package",
+  nextHref = "/booking/select-package",
   nextLabel = "Next",
   nextDisabled = false,
   footerText = "© 2025 Koh Tao Scuba Club. All rights reserved.",
