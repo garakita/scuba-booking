@@ -7,8 +7,8 @@ import { cn } from "@/lib/utils";
 const STEPS = [
   { id: 1, label: "Reservation Detail" },
   { id: 2, label: "Select Package" },
-  { id: 3, label: "Customer Information" },
-  { id: 4, label: "Summary and Payment" },
+  { id: 3, label: "Payment" },
+  { id: 4, label: "Summary" },
 ];
 
 interface HeaderProps {
@@ -29,12 +29,10 @@ export function Header({
       {/* Desktop: Single row - Name | Progress | Status */}
       <div className="hidden lg:flex flex-row items-center justify-between gap-6 px-6 xl:px-8 py-6 lg:py-8 pb-8 lg:pb-10 max-w-[1440px] mx-auto">
         {/* Left: Venue name */}
-        <div className="flex flex-row items-center gap-1 shrink-0 min-w-0">
+        <div className="flex flex-row items-center shrink-0 min-w-0">
           <span className="text-white font-semibold text-base truncate">
             {venueName}
           </span>
-          <span className="text-white text-sm shrink-0">-</span>
-          <span className="text-white text-sm truncate">{branchName}</span>
         </div>
 
         {/* Center: Progress bar - equal spacing, line centered with circles */}
@@ -74,16 +72,13 @@ export function Header({
           })}
         </div>
 
-        {/* Right: Date, Time, Price */}
+        {/* Right: Date, Price */}
         <div className="flex flex-row items-center gap-3 shrink-0">
           <div className="flex flex-row items-center gap-1.5 text-white">
             <Calendar className="w-5 h-5 shrink-0" />
             <span className="text-sm whitespace-nowrap">
               {format(new Date(), "MMM d, yyyy")}
             </span>
-          </div>
-          <div className="flex items-center px-2 py-1 bg-[#B34032] rounded text-white">
-            <span className="text-sm font-semibold">12:00</span>
           </div>
           <span className="text-base font-semibold text-white">
             ฿{totalPrice.toLocaleString()}
@@ -94,21 +89,16 @@ export function Header({
       {/* Mobile/Tablet: Stacked layout */}
       <div className="lg:hidden flex flex-col">
         <div className="flex flex-row items-center justify-between gap-2 px-5 py-5 lg:py-6">
-          <div className="flex flex-row items-center gap-1 min-w-0">
+          <div className="flex flex-row items-center min-w-0">
             <span className="text-white font-semibold text-sm truncate">
               {venueName}
             </span>
-            <span className="text-white text-sm shrink-0">-</span>
-            <span className="text-white text-xs truncate">{branchName}</span>
           </div>
           <div className="flex flex-row items-center gap-2 shrink-0">
             <Calendar className="w-4 h-4 text-white" />
             <span className="text-white text-xs">
               {format(new Date(), "MMM d, yyyy")}
             </span>
-            <div className="px-1.5 py-0.5 bg-[#B34032] rounded">
-              <span className="text-xs font-semibold text-white">12:00</span>
-            </div>
             <span className="text-sm font-semibold text-white">
               ฿{totalPrice.toLocaleString()}
             </span>

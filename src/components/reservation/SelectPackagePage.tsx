@@ -84,7 +84,7 @@ export function SelectPackagePage() {
 
       <FooterButtons
         backHref="/"
-        nextHref={selectedCourseId ? `/customer-info?divers=${diverCount}&courseId=${selectedCourseId}` : undefined}
+        nextHref={selectedCourseId ? `/payment?divers=${diverCount}&courseId=${selectedCourseId}` : undefined}
         nextDisabled={!selectedCourseId}
       />
     </div>

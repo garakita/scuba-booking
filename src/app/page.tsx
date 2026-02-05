@@ -1,5 +1,5 @@
-import { ReservationDetailPage } from "@/components/reservation/ReservationDetailPage";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return <ReservationDetailPage />;
+  redirect("/reservation-detail");
 }

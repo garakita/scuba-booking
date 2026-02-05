@@ -7,6 +7,7 @@ interface FooterButtonsProps {
   backHref?: string;
   showBack?: boolean;
   nextHref?: string;
+  nextLabel?: string;
   nextDisabled?: boolean;
   footerText?: string;
 }
@@ -15,6 +16,7 @@ export function FooterButtons({
   backHref,
   showBack = true,
   nextHref = "/select-package",
+  nextLabel = "Next",
   nextDisabled = false,
   footerText = "© 2025 Koh Tao Scuba Club. All rights reserved.",
 }: FooterButtonsProps) {
@@ -46,7 +48,7 @@ export function FooterButtons({
             <Button
               className="w-full h-12 bg-[#CD5B4D] text-white hover:bg-[#B34032] rounded-[10px] font-semibold text-sm"
             >
-              Next
+              {nextLabel}
             </Button>
           </Link>
         ) : (
@@ -54,7 +56,7 @@ export function FooterButtons({
             className="flex-1 max-w-[200px] sm:max-w-[320px] md:max-w-[440px] lg:max-w-[560px] h-12 bg-[#E8E8ED] text-[#92929D] rounded-[10px] font-semibold text-sm cursor-not-allowed"
             disabled
           >
-            Next
+            {nextLabel}
           </Button>
         )}
       </div>
