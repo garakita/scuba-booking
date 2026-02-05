@@ -61,28 +61,30 @@ export function SummaryPage() {
 
       {/* Content */}
       <div className="relative z-10 w-full flex flex-col items-center -mt-8 sm:-mt-12 md:-mt-16 lg:-mt-24 xl:-mt-32 pt-0 pb-24">
-        {/* Greeting section */}
-        <div className="flex flex-col items-center gap-4 px-4 py-6 lg:py-8">
-          <h2 className="text-[#171725] font-semibold text-xl leading-[26px] text-center">
-            Thank you for your booking!
-          </h2>
-          <p className="text-[#92929D] text-sm leading-[18px] text-center max-w-[343px]">
-            Please review your reservation details below before confirming.
-          </p>
+        {/* Greeting section - white card for readability */}
+        <div className="w-full max-w-[910px] px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mx-auto mb-4 md:mb-6">
+          <div className="w-full bg-white rounded-2xl md:rounded-[24px] shadow-sm p-4 sm:p-6 lg:p-8">
+            <h2 className="text-[#122C49] font-semibold text-xl leading-[26px] text-center">
+              Thank you for your booking!
+            </h2>
+            <p className="text-[#696974] text-sm leading-[21px] text-center max-w-[343px] mx-auto mt-3">
+              Please review your reservation details below before confirming.
+            </p>
+          </div>
         </div>
 
-        {/* Main content - 2 columns */}
-        <div className="w-full max-w-[910px] px-4 md:px-8 lg:px-[265px] flex flex-col lg:flex-row gap-6 lg:gap-[24px]">
+        {/* Main content - 2 columns, responsive */}
+        <div className="w-full max-w-[910px] px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mx-auto flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-[24px]">
           {/* Left column - Customer info & Booking */}
-          <div className="w-full lg:w-[326px] flex flex-col gap-4 shrink-0">
+          <div className="w-full lg:w-[326px] lg:min-w-[280px] flex flex-col gap-4 shrink-0">
             {/* Customer Information card */}
-            <div className="w-full bg-white rounded-[24px] overflow-hidden shadow-sm">
-              <div className="flex flex-row items-center px-4 py-4 border-b border-[#E2E2EA]">
-                <h2 className="text-[#122C49] font-semibold text-xl leading-[26px]">
+            <div className="w-full bg-white rounded-2xl md:rounded-[24px] overflow-hidden shadow-sm">
+              <div className="flex flex-row items-center px-4 py-3 md:py-4 border-b border-[#E2E2EA]">
+                <h2 className="text-[#122C49] font-semibold text-lg md:text-xl leading-[26px]">
                   Customer Information
                 </h2>
               </div>
-              <div className="flex flex-col gap-4 p-4">
+              <div className="flex flex-col gap-3 md:gap-4 p-4">
                 <div className="flex flex-col gap-1">
                   <span className="text-[#B5B5BE] text-sm leading-[18px]">
                     Full Name
@@ -111,8 +113,8 @@ export function SummaryPage() {
             </div>
 
             {/* Booking details card */}
-            <div className="w-full bg-white rounded-[24px] overflow-hidden shadow-sm">
-              <div className="flex flex-row items-center px-4 py-4 border-b border-[#E2E2EA]">
+            <div className="w-full bg-white rounded-2xl md:rounded-[24px] overflow-hidden shadow-sm">
+              <div className="flex flex-row items-center px-4 py-3 md:py-4 border-b border-[#E2E2EA]">
                 <h2 className="text-[#122C49] font-semibold text-xl leading-[26px]">
                   Booking Details
                 </h2>
@@ -163,17 +165,17 @@ export function SummaryPage() {
           </div>
 
           {/* Right column - Order Summary */}
-          <div className="w-full lg:flex-1 lg:max-w-[560px] flex flex-col">
-            <div className="w-full bg-white rounded-[24px] overflow-hidden shadow-sm">
-              <div className="flex flex-row items-center px-4 py-4 border-b border-[#E2E2EA]">
-                <h2 className="text-[#122C49] font-semibold text-xl leading-[26px]">
+          <div className="w-full lg:flex-1 lg:min-w-0 lg:max-w-[560px] flex flex-col">
+            <div className="w-full bg-white rounded-2xl md:rounded-[24px] overflow-hidden shadow-sm">
+              <div className="flex flex-row items-center px-4 py-3 md:py-4 border-b border-[#E2E2EA]">
+                <h2 className="text-[#122C49] font-semibold text-lg md:text-xl leading-[26px]">
                   Order Summary
                 </h2>
               </div>
 
               <div className="flex flex-col">
                 {/* Order list */}
-                <div className="flex flex-col gap-4 p-4">
+                <div className="flex flex-col gap-3 md:gap-4 p-4">
                   {selectedCourse ? (
                     <div className="flex flex-row justify-between items-center gap-4">
                       <div className="flex flex-row items-center gap-4 min-w-0 flex-1">
@@ -243,9 +245,9 @@ export function SummaryPage() {
       </div>
 
       <FooterButtons
-        backHref={`/customer-info?divers=${diverCount}&courseId=${courseId}`}
-        nextHref={selectedCourse ? "/thank-you" : undefined}
-        nextDisabled={!selectedCourse}
+        showBack={false}
+        nextHref="/"
+        nextLabel="Back to Home"
         footerText="© 2025 Koh Tao Scuba Club. All rights reserved."
       />
     </div>
